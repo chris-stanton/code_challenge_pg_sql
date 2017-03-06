@@ -29,7 +29,7 @@ router.get('/', function(req, res) {
 
 router.post('/', function(req, res) {
   var newTreat = req.body;
-  console.log("this is your tasty ", newTreat);
+  console.log("POST router error", newTreat);
   pg.connect(connectionString, function(err, client, done) {
     if(err) {
       console.log('connection error: ', err);
@@ -42,7 +42,7 @@ router.post('/', function(req, res) {
       function(err, result) {
         done();
         if(err) {
-          console.log('insert query error: ', err);
+          console.log('POST query error: ', err);
           res.sendStatus(500);
         } else {
           res.sendStatus(201);
